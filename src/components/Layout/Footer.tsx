@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-blue-400">ExamVector</h3>
             <p className="text-gray-300 text-sm">
-              Secure, offline-first exam platform for Indian students and institutions.
+              Secure, offline-first platform for all competitive exams across India.
               DPDP compliant with blockchain audit trails.
             </p>
           </div>

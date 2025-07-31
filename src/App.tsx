@@ -9,6 +9,10 @@ import { Home } from './pages/Home'
 import { FormPage } from './pages/FormPage'
 import { Dashboard } from './pages/Dashboard'
 import { Login } from './pages/Login'
+import { ExamsPage } from './pages/ExamsPage'
+import { ExamResultsPage } from './pages/ExamResultsPage'
+import { ExamApplicationPage } from './pages/ExamApplicationPage'
+import { ResultsPage } from './pages/ResultsPage'
 import { localStorage } from './lib/storage'
 import './lib/i18n'
 
@@ -44,6 +48,12 @@ function App() {
               <Route path="/form" element={<FormPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/exams" element={<ExamsPage />} />
+              <Route path="/apply/:examId" element={<ExamApplicationPage />} />
+              <Route path="/results" element={<ResultsPage />} />
+              <Route path="/exam-results" element={<ExamResultsPage />} />
+              <Route path="/exam-application" element={<ExamApplicationPage />} />
+              <Route path="/exam-application/:examId" element={<ExamApplicationPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="*" element={<Navigate to="/" replace />} />

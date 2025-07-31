@@ -16,12 +16,16 @@ ExamVector is a production-ready, offline-first exam platform built for Indian s
 
 ### Technical Architecture
 - **Frontend**: React 18 + TypeScript + Tailwind CSS
+- **Backend**: Node.js + Express.js with Redis caching
+- **Load Balancing**: NGINX for distributing traffic across multiple API instances
 - **State Management**: React Context + React Query
 - **Offline Storage**: IndexedDB for offline-first architecture
 - **Authentication**: JWT-based with secure HTTP-only cookies
 - **Validation**: Zod schemas with react-hook-form
 - **PWA**: Service Worker + App Manifest
 - **Internationalization**: i18next with language detection
+- **Caching**: Redis for high-performance data caching
+- **Scalability**: Docker containerization for easy scaling
 
 ### Security & Compliance
 - **DPDP Act Compliance**: Explicit consent, data minimization, user rights
@@ -35,6 +39,8 @@ ExamVector is a production-ready, offline-first exam platform built for Indian s
 ### Prerequisites
 - Node.js 18+ 
 - npm or yarn
+- Docker and Docker Compose (for containerized deployment)
+- Redis (for caching)
 
 ### Installation
 
@@ -53,6 +59,25 @@ ExamVector is a production-ready, offline-first exam platform built for Indian s
 3. **Open in browser**:
    ```
    http://localhost:3000
+   ```
+
+### Docker Deployment (with Load Balancing)
+
+For production deployment with load balancing and Redis caching:
+
+1. **Build and start the containers**:
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Access the application**:
+   ```
+   http://localhost
+   ```
+
+3. **Scale API servers as needed**:
+   ```bash
+   docker-compose up -d --scale api=6
    ```
 
 ### Demo Credentials

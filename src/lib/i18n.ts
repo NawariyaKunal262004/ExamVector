@@ -14,8 +14,8 @@ const resources = {
       'nav.logout': 'Logout',
       
       // Home Page
-      'home.title': 'ExamVector - Secure Exam Platform',
-      'home.subtitle': 'Offline-first, blockchain-secured exam platform for Indian students and institutions',
+      'home.title': 'ExamVector - All India Competitive Exams Platform',
+      'home.subtitle': 'Offline-first, blockchain-secured platform for all competitive exams across India',
       'home.startForm': 'Start Form',
       'home.installApp': 'Install App',
       'home.benefits.title': 'Platform Benefits',
@@ -97,8 +97,8 @@ const resources = {
       'nav.logout': 'लॉगआउट',
       
       // Home Page
-      'home.title': 'एक्जामवेक्टर - सुरक्षित परीक्षा प्लेटफॉर्म',
-      'home.subtitle': 'भारतीय छात्रों और संस्थानों के लिए ऑफलाइन-फर्स्ट, ब्लॉकचेन-सुरक्षित परीक्षा प्लेटफॉर्म',
+      'home.title': 'एक्जामवेक्टर - अखिल भारतीय प्रतियोगी परीक्षा प्लेटफॉर्म',
+      'home.subtitle': 'पूरे भारत में सभी प्रतियोगी परीक्षाओं के लिए ऑफलाइन-फर्स्ट, ब्लॉकचेन-सुरक्षित प्लेटफॉर्म',
       'home.startForm': 'फॉर्म शुरू करें',
       'home.installApp': 'ऐप इंस्टॉल करें',
       'home.benefits.title': 'प्लेटफॉर्म के फायदे',
