@@ -6,69 +6,191 @@
     <title>ExamVector - Redefining Exam Management for India's Digital Future</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            background: #f5f5f5;
+        }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* Navigation */
-        nav { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 2rem; font-weight: bold; }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 5px; transition: all 0.3s; }
-        .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,0.2); }
+        /* Navigation - Always visible */
+        nav { 
+            background: #1e3c72; 
+            color: white; 
+            padding: 1rem 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .nav-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            font-size: 2rem; 
+            font-weight: bold; 
+            color: white;
+        }
+        .nav-links { 
+            display: flex; 
+            gap: 1.5rem; 
+        }
+        .nav-links a { 
+            color: white; 
+            text-decoration: none; 
+            padding: 0.5rem 1rem; 
+            border-radius: 5px; 
+            transition: background 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { 
+            background: rgba(255,255,255,0.2); 
+        }
+        
+        /* Page sections */
+        .page { 
+            display: none; 
+            min-height: 80vh;
+        }
+        .page.active { 
+            display: block; 
+        }
         
         /* Hero Section */
-        .hero { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 6rem 0; text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; }
-        .hero .tagline { font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.9; }
-        .hero p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.8; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero { 
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); 
+            color: white; 
+            padding: 4rem 0; 
+            text-align: center; 
+        }
+        .hero h1 { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            font-weight: bold;
+        }
+        .hero .tagline { 
+            font-size: 1.3rem; 
+            margin-bottom: 1.5rem; 
+            opacity: 0.9; 
+        }
+        .hero p { 
+            font-size: 1rem; 
+            margin-bottom: 2rem; 
+            opacity: 0.8; 
+            max-width: 800px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
         
-        /* Features Grid */
-        .features { padding: 4rem 0; background: #f8f9fa; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .feature-card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); }
-        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .feature-card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #1e3c72; }
+        /* Content sections */
+        .content { 
+            padding: 3rem 0; 
+            background: white; 
+        }
+        .section-title { 
+            font-size: 2rem; 
+            text-align: center; 
+            margin-bottom: 2rem; 
+            color: #1e3c72;
+        }
         
-        /* Page Sections */
-        .page { display: none; padding: 2rem 0; }
-        .page.active { display: block; }
-        .page-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 0; text-align: center; }
-        .page-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        /* Grid layouts */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin: 2rem 0; 
+        }
+        .card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            border-left: 4px solid #1e3c72;
+        }
+        .card h3 { 
+            color: #1e3c72; 
+            margin-bottom: 1rem; 
+        }
+        .card p { 
+            color: #666; 
+            margin-bottom: 1rem; 
+        }
         
-        /* Service Cards */
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 2rem 0; }
-        .service-card { background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .service-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; text-align: center; }
-        .service-body { padding: 2rem; }
-        .service-item { margin-bottom: 1.5rem; padding: 1rem; border-left: 4px solid #667eea; background: #f8f9fa; }
-        .btn { display: inline-block; padding: 0.75rem 1.5rem; background: #667eea; color: white; text-decoration: none; border-radius: 5px; transition: all 0.3s; border: none; cursor: pointer; }
-        .btn:hover { background: #5a6fd8; transform: translateY(-2px); }
+        /* Buttons */
+        .btn { 
+            display: inline-block; 
+            padding: 0.75rem 1.5rem; 
+            background: #1e3c72; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            border: none; 
+            cursor: pointer; 
+            transition: background 0.3s;
+            margin: 0.25rem;
+        }
+        .btn:hover { 
+            background: #2a5298; 
+        }
         .btn-success { background: #28a745; }
         .btn-warning { background: #ffc107; color: #333; }
         .btn-danger { background: #dc3545; }
         .btn-info { background: #17a2b8; }
         
-        /* Footer */
-        footer { background: #2c3e50; color: white; padding: 3rem 0; text-align: center; }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .service-grid { grid-template-columns: 1fr; }
+        /* Service items */
+        .service-item { 
+            background: #f8f9fa; 
+            padding: 1rem; 
+            margin: 1rem 0; 
+            border-radius: 5px; 
+            border-left: 3px solid #1e3c72;
+        }
+        .service-item h4 { 
+            color: #1e3c72; 
+            margin-bottom: 0.5rem; 
         }
         
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .mb-2 { margin-bottom: 1rem; }
-        .mb-4 { margin-bottom: 2rem; }
-        .mt-4 { margin-top: 2rem; }
-        .hidden { display: none; }
+        /* Footer */
+        footer { 
+            background: #2c3e50; 
+            color: white; 
+            padding: 2rem 0; 
+            text-align: center; 
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Loading indicator */
+        .loading { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #1e3c72; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem; 
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+        🚀 ExamVector Loading...
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -78,7 +200,7 @@
                     <a href="#" onclick="showPage('home')" class="active">Home</a>
                     <a href="#" onclick="showPage('school-boards')">School Boards</a>
                     <a href="#" onclick="showPage('universities')">Universities</a>
-                    <a href="#" onclick="showPage('competitive')">Competitive Exams</a>
+                    <a href="#" onclick="showPage('competitive')">Competitive</a>
                     <a href="#" onclick="showPage('recruitment')">Recruitment</a>
                     <a href="#" onclick="showPage('help')">Help</a>
                     <a href="#" onclick="showPage('contact')">Contact</a>
@@ -89,7 +211,6 @@
 
     <!-- Home Page -->
     <div id="home" class="page active">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <h1>ExamVector</h1>
@@ -98,115 +219,68 @@
             </div>
         </section>
 
-        <!-- Problem & Solution -->
-        <section style="padding: 4rem 0; background: white;">
+        <section class="content">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
-                    <div>
-                        <h2 style="color: #dc3545; margin-bottom: 2rem; font-size: 2rem;">The Problem</h2>
-                        <p style="margin-bottom: 1rem;">During critical periods such as exam form submissions, result announcements, and recruitment drives, traditional systems often collapse. As deadlines approach, millions of candidates access portals simultaneously, which leads to:</p>
-                        <ul style="margin-left: 2rem; color: #666;">
+                <h2 class="section-title">The Problem & Our Solution</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3 style="color: #dc3545;">❌ The Problem</h3>
+                        <p>During critical periods such as exam form submissions, result announcements, and recruitment drives, traditional systems often collapse:</p>
+                        <ul style="margin-left: 1.5rem; color: #666;">
                             <li>Website crashes</li>
-                            <li>Lost or corrupted data during exchanges</li>
-                            <li>Frustration for students and institutions</li>
-                            <li>Delays in admissions, results, and recruitment processes</li>
+                            <li>Lost or corrupted data</li>
+                            <li>Student frustration</li>
+                            <li>Process delays</li>
                         </ul>
                     </div>
-                    <div>
-                        <h2 style="color: #28a745; margin-bottom: 2rem; font-size: 2rem;">The Solution: ExamVector</h2>
-                        <p style="margin-bottom: 1rem;">ExamVector is designed to eliminate these failures. With its crash-proof, load-balanced, and offline-synced architecture, ExamVector ensures that no matter how high the traffic surges:</p>
-                        <ul style="margin-left: 2rem; color: #666;">
-                            <li>Portals remain stable and responsive</li>
-                            <li>Data exchange is secure and reliable</li>
-                            <li>Processes like admissions, results, and recruitment run smoothly</li>
+                    <div class="card">
+                        <h3 style="color: #28a745;">✅ Our Solution</h3>
+                        <p>ExamVector eliminates these failures with crash-proof, load-balanced architecture:</p>
+                        <ul style="margin-left: 1.5rem; color: #666;">
+                            <li>Portals remain stable</li>
+                            <li>Secure data exchange</li>
+                            <li>Smooth processes</li>
+                            <li>Zero downtime</li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Core Features -->
-        <section class="features">
-            <div class="container">
-                <div class="text-center">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Core Capabilities</h2>
-                    <p style="font-size: 1.2rem; color: #666;">Built for India's most demanding examination scenarios</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3>Crash-Proof & Offline-First</h3>
-                        <p>Works seamlessly in low-connectivity regions with offline synchronization to prevent disruptions.</p>
+                <h2 class="section-title">Core Capabilities</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🛡️ Crash-Proof & Offline-First</h3>
+                        <p>Works seamlessly in low-connectivity regions with offline synchronization.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔗</div>
-                        <h3>Blockchain-Audited Transparency</h3>
-                        <p>Every critical action is logged on a blockchain framework, ensuring tamper-proof auditing and trustworthiness of exam data.</p>
+                    <div class="card">
+                        <h3>🔗 Blockchain-Audited</h3>
+                        <p>Every action logged on blockchain for tamper-proof auditing.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>DPDP Compliance</h3>
-                        <p>Fully compliant with India's Digital Personal Data Protection (DPDP) Act, protecting sensitive student and institutional data.</p>
+                    <div class="card">
+                        <h3>🔒 DPDP Compliance</h3>
+                        <p>Fully compliant with India's Digital Personal Data Protection Act.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">☁️</div>
-                        <h3>Cloud-Native Infrastructure</h3>
-                        <p>Auto-scalable architecture to handle unpredictable spikes in traffic with Redis-based queue systems.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Who We Serve -->
-        <section style="padding: 4rem 0; background: white;">
-            <div class="container">
-                <div class="text-center mb-4">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Who We Serve</h2>
-                </div>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <div class="service-header">
-                            <h3>🏛️ Government Bodies & State Departments</h3>
-                        </div>
-                        <div class="service-body">
-                            <p>Seamlessly manage large-scale recruitment and vacancy exams with zero downtime and complete transparency.</p>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-header">
-                            <h3>🎓 Universities & Higher Education</h3>
-                        </div>
-                        <div class="service-body">
-                            <p>Conduct entrance exams, publish results, and manage admissions reliably with blockchain-verified processes.</p>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-header">
-                            <h3>🏫 School Boards</h3>
-                        </div>
-                        <div class="service-body">
-                            <p>Handle high-volume examinations with zero downtime, ensuring fairness and credibility for millions of students.</p>
-                        </div>
+                    <div class="card">
+                        <h3>☁️ Cloud-Native</h3>
+                        <p>Auto-scalable architecture with Redis-based queue systems.</p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
     <!-- School Boards Page -->
     <div id="school-boards" class="page">
-        <div class="page-header">
+        <section class="hero">
             <div class="container">
                 <h1>School Board Examinations</h1>
                 <p>CBSE, ICSE, State Boards - Complete Digital Solutions</p>
             </div>
-        </div>
-        <div class="container" style="padding: 2rem 0;">
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-header">
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
                         <h3>📝 Exam Forms</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>CBSE Class 10th & 12th</h4>
                             <p>Online registration for board examinations</p>
@@ -223,13 +297,8 @@
                             <button class="btn">Apply Now</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>📊 Results</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>CBSE Results</h4>
                             <p>Class 10th & 12th board results</p>
@@ -246,13 +315,8 @@
                             <button class="btn btn-success">Check Result</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🎫 Permission Letters</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>Admit Cards</h4>
                             <p>Download hall tickets for board exams</p>
@@ -271,24 +335,22 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Universities Page -->
     <div id="universities" class="page">
-        <div class="page-header">
+        <section class="hero">
             <div class="container">
                 <h1>University Examinations</h1>
                 <p>Central & State Universities - Comprehensive Services</p>
             </div>
-        </div>
-        <div class="container" style="padding: 2rem 0;">
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-header">
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
                         <h3>📝 Exam Forms</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>Central Universities</h4>
                             <p>DU, JNU, BHU entrance applications</p>
@@ -299,27 +361,12 @@
                             <p>All state university entrance forms</p>
                             <button class="btn">Apply Now</button>
                         </div>
-                        <div class="service-item">
-                            <h4>Private Universities</h4>
-                            <p>Private university entrance applications</p>
-                            <button class="btn">Apply Now</button>
-                        </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🎫 Permission Letters</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>Admit Cards</h4>
                             <p>University entrance exam hall tickets</p>
-                            <button class="btn btn-warning">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Permission Letters</h4>
-                            <p>Special permissions and corrections</p>
                             <button class="btn btn-warning">Download</button>
                         </div>
                         <div class="service-item">
@@ -328,13 +375,8 @@
                             <button class="btn btn-warning">Apply</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>📊 Results</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>Entrance Results</h4>
                             <p>University entrance examination results</p>
@@ -345,493 +387,233 @@
                             <p>Regular semester examination results</p>
                             <button class="btn btn-success">Check Result</button>
                         </div>
-                        <div class="service-item">
-                            <h4>Final Results</h4>
-                            <p>Final year and degree results</p>
-                            <button class="btn btn-success">Check Result</button>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Competitive Exams Page -->
     <div id="competitive" class="page">
-        <div class="page-header">
+        <section class="hero">
             <div class="container">
                 <h1>Competitive Examinations</h1>
                 <p>JEE, NEET, CAT, GATE - Complete Exam Solutions</p>
             </div>
-        </div>
-        <div class="container" style="padding: 2rem 0;">
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-header">
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
                         <h3>📝 Forms</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>JEE Main & Advanced</h4>
-                            <p>Engineering entrance applications</p>
                             <button class="btn">Apply Now</button>
                         </div>
                         <div class="service-item">
                             <h4>NEET UG & PG</h4>
-                            <p>Medical entrance applications</p>
                             <button class="btn">Apply Now</button>
                         </div>
                         <div class="service-item">
                             <h4>CAT, MAT, XAT</h4>
-                            <p>Management entrance applications</p>
-                            <button class="btn">Apply Now</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>GATE, NET</h4>
-                            <p>Graduate aptitude test applications</p>
                             <button class="btn">Apply Now</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🏙️ City Allotment</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>JEE City Allotment</h4>
-                            <p>Exam center city allocation</p>
                             <button class="btn btn-info">Check Allotment</button>
                         </div>
                         <div class="service-item">
                             <h4>NEET City Allotment</h4>
-                            <p>Medical exam center allocation</p>
-                            <button class="btn btn-info">Check Allotment</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>GATE City Allotment</h4>
-                            <p>Graduate exam center allocation</p>
                             <button class="btn btn-info">Check Allotment</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🎫 Permission Letters</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>Admit Cards</h4>
-                            <p>Competitive exam hall tickets</p>
-                            <button class="btn btn-warning">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Permission Letters</h4>
-                            <p>Special permissions and corrections</p>
                             <button class="btn btn-warning">Download</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🔑 Answer Keys</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>JEE Answer Keys</h4>
-                            <p>Official answer keys and solutions</p>
                             <button class="btn btn-danger">Download</button>
                         </div>
                         <div class="service-item">
                             <h4>NEET Answer Keys</h4>
-                            <p>Medical exam answer keys</p>
-                            <button class="btn btn-danger">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>GATE Answer Keys</h4>
-                            <p>Graduate exam answer keys</p>
                             <button class="btn btn-danger">Download</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>📊 Results</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>JEE Results</h4>
-                            <p>Engineering entrance results</p>
                             <button class="btn btn-success">Check Result</button>
                         </div>
                         <div class="service-item">
                             <h4>NEET Results</h4>
-                            <p>Medical entrance results</p>
-                            <button class="btn btn-success">Check Result</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>CAT Results</h4>
-                            <p>Management entrance results</p>
-                            <button class="btn btn-success">Check Result</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>GATE Results</h4>
-                            <p>Graduate aptitude test results</p>
                             <button class="btn btn-success">Check Result</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
+
     <!-- Recruitment Page -->
     <div id="recruitment" class="page">
-        <div class="page-header">
+        <section class="hero">
             <div class="container">
                 <h1>Government Recruitment</h1>
                 <p>Central & State Government Job Examinations</p>
             </div>
-        </div>
-        <div class="container" style="padding: 2rem 0;">
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-header">
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
                         <h3>📝 Forms</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>UPSC Examinations</h4>
-                            <p>Civil Services, Engineering Services</p>
                             <button class="btn">Apply Now</button>
                         </div>
                         <div class="service-item">
                             <h4>SSC Examinations</h4>
-                            <p>CGL, CHSL, MTS, JE applications</p>
                             <button class="btn">Apply Now</button>
                         </div>
                         <div class="service-item">
                             <h4>Banking Exams</h4>
-                            <p>IBPS, SBI, RBI applications</p>
-                            <button class="btn">Apply Now</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Railway Exams</h4>
-                            <p>RRB NTPC, Group D, JE applications</p>
-                            <button class="btn">Apply Now</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>State PSC</h4>
-                            <p>State Public Service Commission exams</p>
                             <button class="btn">Apply Now</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🏙️ City Allotment</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>UPSC City Allotment</h4>
-                            <p>Civil services exam center allocation</p>
                             <button class="btn btn-info">Check Allotment</button>
                         </div>
                         <div class="service-item">
                             <h4>SSC City Allotment</h4>
-                            <p>Staff selection exam center allocation</p>
-                            <button class="btn btn-info">Check Allotment</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Banking City Allotment</h4>
-                            <p>Banking exam center allocation</p>
-                            <button class="btn btn-info">Check Allotment</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Railway City Allotment</h4>
-                            <p>Railway exam center allocation</p>
                             <button class="btn btn-info">Check Allotment</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>🎫 Permission Letters</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>Admit Cards</h4>
-                            <p>Government exam hall tickets</p>
-                            <button class="btn btn-warning">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Permission Letters</h4>
-                            <p>Special permissions and corrections</p>
-                            <button class="btn btn-warning">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Call Letters</h4>
-                            <p>Interview and document verification</p>
                             <button class="btn btn-warning">Download</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <h3>🔑 Answer Keys</h3>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-item">
-                            <h4>UPSC Answer Keys</h4>
-                            <p>Civil services answer keys</p>
-                            <button class="btn btn-danger">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>SSC Answer Keys</h4>
-                            <p>Staff selection answer keys</p>
-                            <button class="btn btn-danger">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Banking Answer Keys</h4>
-                            <p>Banking exam answer keys</p>
-                            <button class="btn btn-danger">Download</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Railway Answer Keys</h4>
-                            <p>Railway exam answer keys</p>
-                            <button class="btn btn-danger">Download</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>📊 Results</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
                             <h4>UPSC Results</h4>
-                            <p>Civil services examination results</p>
                             <button class="btn btn-success">Check Result</button>
                         </div>
                         <div class="service-item">
                             <h4>SSC Results</h4>
-                            <p>Staff selection examination results</p>
-                            <button class="btn btn-success">Check Result</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Banking Results</h4>
-                            <p>Banking examination results</p>
-                            <button class="btn btn-success">Check Result</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Railway Results</h4>
-                            <p>Railway examination results</p>
-                            <button class="btn btn-success">Check Result</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>State PSC Results</h4>
-                            <p>State commission examination results</p>
                             <button class="btn btn-success">Check Result</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Help Page -->
     <div id="help" class="page">
-        <div class="page-header">
+        <section class="hero">
             <div class="container">
                 <h1>Help & Support</h1>
-                <p>Get assistance with your exam applications and processes</p>
+                <p>Get assistance with your exam applications</p>
             </div>
-        </div>
-        <div class="container" style="padding: 2rem 0;">
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-header">
-                        <h3>❓ Frequently Asked Questions</h3>
-                    </div>
-                    <div class="service-body">
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
+                        <h3>❓ FAQ</h3>
                         <div class="service-item">
                             <h4>How to apply for exam forms?</h4>
-                            <p>Navigate to the respective exam section and click on "Apply Now". Fill the required details and submit with payment.</p>
+                            <p>Navigate to exam section and click "Apply Now"</p>
                         </div>
                         <div class="service-item">
                             <h4>How to download admit cards?</h4>
-                            <p>Go to the exam section and click "Download" under Permission Letters. Enter your registration number and date of birth.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>How to check results?</h4>
-                            <p>Visit the results section of your exam and enter your roll number or registration number to view results.</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>What if I forgot my registration number?</h4>
-                            <p>Use the "Forgot Registration Number" option available on exam portals or contact our support team.</p>
+                            <p>Click "Download" and enter registration details</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <h3>📞 Support Services</h3>
-                    </div>
-                    <div class="service-body">
+                    <div class="card">
+                        <h3>📞 Support</h3>
                         <div class="service-item">
                             <h4>24/7 Helpline</h4>
-                            <p>Round-the-clock support for urgent queries</p>
                             <button class="btn btn-info">Call Now</button>
                         </div>
                         <div class="service-item">
-                            <h4>Live Chat Support</h4>
-                            <p>Instant assistance through live chat</p>
+                            <h4>Live Chat</h4>
                             <button class="btn btn-info">Start Chat</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Email Support</h4>
-                            <p>Detailed support through email</p>
-                            <button class="btn btn-info">Send Email</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Video Tutorials</h4>
-                            <p>Step-by-step video guides</p>
-                            <button class="btn btn-info">Watch Videos</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <h3>📚 Resources</h3>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-item">
-                            <h4>Application Guidelines</h4>
-                            <p>Complete guide for exam applications</p>
-                            <button class="btn btn-warning">Download PDF</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Document Checklist</h4>
-                            <p>Required documents for different exams</p>
-                            <button class="btn btn-warning">View Checklist</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Payment Guide</h4>
-                            <p>Step-by-step payment process</p>
-                            <button class="btn btn-warning">View Guide</button>
-                        </div>
-                        <div class="service-item">
-                            <h4>Technical Requirements</h4>
-                            <p>System requirements for online exams</p>
-                            <button class="btn btn-warning">Check Requirements</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Contact Page -->
     <div id="contact" class="page">
-        <div class="page-header">
+        <section class="hero">
             <div class="container">
                 <h1>Contact Us</h1>
                 <p>Get in touch with our support team</p>
             </div>
-        </div>
-        <div class="container" style="padding: 2rem 0;">
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-header">
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
                         <h3>📞 Contact Information</h3>
-                    </div>
-                    <div class="service-body">
                         <div class="service-item">
-                            <h4>📧 Email Support</h4>
-                            <p>support@examvector.com<br>info@examvector.com</p>
+                            <h4>📧 Email</h4>
+                            <p>support@examvector.com</p>
                         </div>
                         <div class="service-item">
-                            <h4>📞 Phone Support</h4>
-                            <p>+91 98765 43210<br>+91 87654 32109</p>
-                        </div>
-                        <div class="service-item">
-                            <h4>🕒 Support Hours</h4>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM</p>
+                            <h4>📞 Phone</h4>
+                            <p>+91 98765 43210</p>
                         </div>
                         <div class="service-item">
                             <h4>📍 Address</h4>
-                            <p>ExamVector Technologies Pvt Ltd<br>Jaipur, Rajasthan, India<br>PIN: 302001</p>
+                            <p>ExamVector Technologies Pvt Ltd<br>Jaipur, Rajasthan, India</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
+                    <div class="card">
                         <h3>✉️ Send Message</h3>
-                    </div>
-                    <div class="service-body">
                         <form style="display: flex; flex-direction: column; gap: 1rem;">
                             <input type="text" placeholder="Your Name" style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px;">
                             <input type="email" placeholder="Your Email" style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px;">
-                            <input type="tel" placeholder="Your Phone" style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px;">
-                            <select style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px;">
-                                <option>Select Subject</option>
-                                <option>Application Issue</option>
-                                <option>Payment Problem</option>
-                                <option>Technical Support</option>
-                                <option>General Inquiry</option>
-                            </select>
-                            <textarea rows="5" placeholder="Your Message" style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px; resize: vertical;"></textarea>
-                            <button type="submit" class="btn" style="align-self: flex-start;">Send Message</button>
+                            <textarea rows="4" placeholder="Your Message" style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                            <button type="submit" class="btn">Send Message</button>
                         </form>
                     </div>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <h3>🌐 Follow Us</h3>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-item">
-                            <h4>Social Media</h4>
-                            <p>Stay connected with us on social platforms</p>
-                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                                <button class="btn btn-info">Facebook</button>
-                                <button class="btn btn-info">Twitter</button>
-                                <button class="btn btn-info">LinkedIn</button>
-                            </div>
-                        </div>
-                        <div class="service-item">
-                            <h4>Newsletter</h4>
-                            <p>Subscribe to get latest exam notifications</p>
-                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                                <input type="email" placeholder="Your email" style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
-                                <button class="btn">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 ExamVector Technologies Pvt Ltd. All rights reserved.</p>
-            <p style="margin-top: 0.5rem;">Redefining Exam Management for India's Digital Future</p>
+            <p>Redefining Exam Management for India's Digital Future</p>
         </div>
     </footer>
 
     <script>
+        // Hide loading screen immediately
+        document.getElementById('loading').style.display = 'none';
+
         function showPage(pageId) {
             // Hide all pages
             const pages = document.querySelectorAll('.page');
@@ -843,37 +625,33 @@
                 targetPage.classList.add('active');
             }
             
-            // Update navigation active state
+            // Update navigation
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => link.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             
             // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        // Form submission handler
-        document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Thank you for your message! We will get back to you soon.');
-                    this.reset();
-                });
-            });
-        });
-
-        // Button click handlers
+        // Button handlers
         document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('btn') && !e.target.type) {
+            if (e.target.classList.contains('btn') && e.target.tagName === 'BUTTON') {
                 e.preventDefault();
-                const buttonText = e.target.textContent;
-                alert(`${buttonText} functionality will be available soon!`);
+                alert('Feature coming soon!');
             }
         });
 
-        console.log('ExamVector Platform Loaded Successfully!');
+        // Form handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully!');
+            this.reset();
+        });
+
+        console.log('ExamVector loaded successfully!');
     </script>
 </body>
 </html>
