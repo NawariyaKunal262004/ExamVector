@@ -1,0 +1,18 @@
+{
+  "name": "ExamVector - India's First Crash-Proof Examination Platform",
+  "short_name": "ExamVector",
+  "description": "Crash-proof, offline-first, blockchain-audited examination platform for India",
+  "theme_color": "#1e40af",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ]
+}
